@@ -31,8 +31,20 @@ public class ShowScore extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String id=request.getParameter("id");
+        Student score=Student.getStudent(id);
         String address=null;
-        //按照分數選擇頁面
+        if(score==null){
+            address="/WEB-INF/score-report/UnknownStudent.jsp";
+        }else if(score.getScore()<55){
+            address="/WEB-INF/score-report/LowScore.jsp";
+            request.setAttribute("score", score);
+        }else if(score.getScore()>75){
+            address="/WEB-INF/score-report/HighScore.jsp";
+            request.setAttribute("score", score);
+        }else{
+            address="/WEB-INF/score-report/NormalScore.jsp";
+            request.setAttribute("score", score);
+        }
         request.getRequestDispatcher(address).forward(request, response);
     }
 

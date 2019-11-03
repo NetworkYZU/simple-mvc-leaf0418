@@ -3,7 +3,7 @@
     Created on : Sep 24, 2018, 7:35:46 AM
     Author     : lendle
 --%>
-
+<%@page import="lendle.courses.network.simplemvc.Student"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,6 +12,10 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <%
+            Student score=(Student)request.getAttribute("score");
+        %>
+        <h1>恩亨, <%=score.getName()%></h1>
+        普普通通
     </body>
 </html>
