@@ -16,6 +16,7 @@
             Student score=(Student)request.getAttribute("score");
         %>
         <h1>哎呀, <%=score.getName()%></h1>
+        <h1>哎呀, <%=score.getScore()%></h1>
         考太低了吧
     </body>
 </html>
